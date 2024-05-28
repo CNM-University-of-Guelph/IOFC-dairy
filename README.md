@@ -1,7 +1,7 @@
 # IOFC function templates
 Dave Innes
 
-*This document is a rendered version of `IOFC_template.ipynb` (via Quarto).*
+*This document is a md rendered version of `IOFC_template.ipynb` (via Quarto).*
 
 Income over feed cost (IOFC) is calculated below using 2 methods:
 
@@ -448,43 +448,28 @@ NASEM_output = nd.execute_model(
     equation_selection = equation_selection, 
     feed_library_df = feed_library_in) 
 
-NASEM_output
+# Note: call NASEM_output without print() in .ipynb to see a more useful output.
+# NASEM_output
+print(NASEM_output)
 ```
 
-        <div>
-            <h2>Model Output Snapshot</h2>
-            &#10;
-| Description                                         | Value    |
-|-----------------------------------------------------|----------|
-| Milk production kg (Mlk_Prod_comp)                  | 29.741   |
-| Milk fat g/g (MlkFat_Milk)                          | 0.036    |
-| Milk protein g/g (MlkNP_Milk)                       | 0.033    |
-| Milk Production - MP allowable kg (Mlk_Prod_MPalow) | 26.635   |
-| Milk Production - NE allowable kg (Mlk_Prod_NEalow) | 32.793   |
-| Animal ME intake Mcal/d (An_MEIn)                   | 60.149   |
-| Target ME use Mcal/d (Trg_MEuse)                    | 50.446   |
-| Animal MP intake g/d (An_MPIn_g)                    | 1994.160 |
-| Animal MP use g/d (An_MPuse_g_Trg)                  | 1910.743 |
-| Animal RDP intake g/d (An_RDPIn_g)                  | 2381.933 |
-| Diet DCAD meq (An_DCADmeq)                          | 221.438  |
+    =====================
+    Model Output Snapshot
+    =====================
+    Milk production kg (Mlk_Prod_comp): 29.741
+    Milk fat g/g (MlkFat_Milk): 0.036
+    Milk protein g/g (MlkNP_Milk): 0.033
+    Milk Production - MP allowable kg (Mlk_Prod_MPalow): 26.635
+    Milk Production - NE allowable kg (Mlk_Prod_NEalow): 32.793
+    Animal ME intake Mcal/d (An_MEIn): 60.149
+    Target ME use Mcal/d (Trg_MEuse): 50.446
+    Animal MP intake g/d (An_MPIn_g): 1994.16
+    Animal MP use g/d (An_MPuse_g_Trg): 1910.743
+    Animal RDP intake g/d (An_RDPIn_g): 2381.933
+    Diet DCAD meq (An_DCADmeq): 221.438
 
-            <hr>
-            &#10;        <details>
-            <summary><strong>Click this drop-down for ModelOutput description</strong></summary>
-            <p>This is a <code>ModelOutput</code> object returned by <code>nd.execute_model()</code>.</p>
-            <p>Each of the following categories can be called directly as methods, for example, if the name of my object is <code>output</code>, I would call <code>output.Production</code> to see the contents of Production.</p>
-            <p>The following list shows which dictionaries are within each category:</p>
-            <ul>
-        <li><b>Inputs:</b> user_diet, animal_input, equation_selection, coeff_dict, infusion_input, MP_NP_efficiency_input, mPrt_coeff, f_Imb</li><li><b>Intakes:</b> diet_info, infusion_data, diet_data, An_data, energy, protein, AA, FA, rumen_digestable, water</li><li><b>Requirements:</b> energy, protein, vitamin, mineral, mineral_requirements</li><li><b>Production:</b> milk, body_composition, gestation, MiCP</li><li><b>Excretion:</b> fecal, urinary, gaseous, scurf</li><li><b>Digestibility:</b> rumen, TT</li><li><b>Efficiencies:</b> energy, protein, mineral</li><li><b>Miscellaneous:</b> misc</li>
-            </ul>
-            <div>
-                <p>These outputs can be accessed by name, e.g., <code>output.Production['milk']['Mlk_Prod']</code>.</p>
-                <p>There is also a <code>.search()</code> method which takes a string and will return a dataframe of all outputs with that string (case insensitive), e.g., <code>output.search('Mlk')</code>.</p>
-                <p>An individual output can be retrieved directly by providing its exact name to the <code>.get_value()</code> method, e.g., <code>output.get_value('Mlk_Prod')</code>.</p>
-            </div>
-        </details>
-        &#10;        </div>
-        &#10;
+    This is a `ModelOutput` object with methods to access all model outputs. See help(ModelOutput).
+
 ### Calculate IOFC
 
 This uses the prices defined at top of this file and the `NASEM_output`
